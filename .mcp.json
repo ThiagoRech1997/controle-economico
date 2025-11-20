@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "your-github-token-here"
+      },
+      "disabled": false,
+      "alwaysAllow": []
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "env": {
+        "ALLOWED_DIRECTORIES": "c:\\Users\\srbil\\dev\\controle-economico"
+      },
+      "disabled": false,
+      "alwaysAllow": []
+    }
+  },
+  "notes": {
+    "setup": "To enable MCP servers, run: npm install -g @modelcontextprotocol/server-github @modelcontextprotocol/server-filesystem",
+    "github": "Replace 'your-github-token-here' with your actual GitHub personal access token",
+    "usage": "MCP tools will be available with mcp__ prefix (e.g., mcp__github__list-pull-requests)"
+  }
+}

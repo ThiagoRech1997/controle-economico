@@ -1,0 +1,120 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "description": "Add architecture context when working in backend",
+        "matcher": "backend|nestjs|domain|application|infrastructure|use case|prisma",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "User is working on backend code. Remember to follow Clean Architecture: Domain (pure logic) ← Application (use cases) ← Infrastructure (adapters). Check CLAUDE.md for detailed patterns."
+          }
+        ]
+      },
+      {
+        "description": "Add frontend patterns when working in frontend",
+        "matcher": "frontend|next\\.?js|modules|feature|component|react",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "User is working on frontend code. Remember to follow Feature-Sliced Design: modules/<feature>/{components,hooks,services,types}. React Query for server state, Zustand only for global state. Check CLAUDE.md for patterns."
+          }
+        ]
+      },
+      {
+        "description": "Auto-suggest use case template when creating",
+        "matcher": "create.*(use.*case|usecase)|new.*(use.*case|usecase)|add.*(use.*case|usecase)",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "User wants to create a new use case. Suggest using the /use-case command or guide them through Clean Architecture pattern: 1) Domain entity/repository interface, 2) Application DTOs and use case, 3) Infrastructure Prisma implementation and controller, 4) Module wiring."
+          }
+        ]
+      },
+      {
+        "description": "Auto-suggest feature module template",
+        "matcher": "create.*(feature|module)|new.*(feature|module)|add.*feature",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "User wants to create a new feature module. Suggest using the /feature command or guide them through Feature-Sliced Design: modules/<feature>/{components,hooks,services,types}. Remember: React Query for data, no cross-module imports."
+          }
+        ]
+      },
+      {
+        "description": "Suggest validation before commits",
+        "matcher": "commit|git commit|ready to commit",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "User is about to commit. Suggest running /pre-commit command to validate tests, linting, and type-checking before committing."
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "description": "Protect sensitive config files",
+        "matcher": "write.*\\.env",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "IMPORTANT: User is trying to modify .env file. This may expose secrets. Only allow if they're updating with masked values or adding new variables. Never write actual API keys or passwords."
+          }
+        ]
+      },
+      {
+        "description": "Warn before deleting critical files",
+        "matcher": "bash.*rm.*(prisma|schema\\.prisma|package\\.json|tsconfig\\.json|\\.env)",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "WARNING: Command attempts to delete a critical file. Verify this is intentional before allowing. Critical files: schema.prisma, package.json, tsconfig.json, .env files."
+          }
+        ]
+      },
+      {
+        "description": "Validate Prisma migrations",
+        "matcher": "bash.*prisma.*migrate",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Prisma migration detected. Ensure: 1) Schema is valid, 2) Migration has descriptive name, 3) Database backup exists (if production), 4) Team is aware of schema changes."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "description": "Validate Prisma schema after modifications",
+        "matcher": "write.*schema\\.prisma",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Prisma schema was modified. Suggest running: 1) npx prisma validate, 2) npx prisma format, 3) Consider creating migration with /db-migrate command."
+          }
+        ]
+      },
+      {
+        "description": "Suggest testing after use case creation",
+        "matcher": "write.*use-case|write.*\\.use-case\\.ts",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Use case file was created/modified. Remind user to: 1) Create unit tests, 2) Test with mock repository, 3) Add integration test if needed."
+          }
+        ]
+      },
+      {
+        "description": "Suggest running dev server after major changes",
+        "matcher": "write.*(module\\.ts|controller\\.ts|service\\.ts)",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Backend infrastructure file was modified. Consider testing by running 'npm run start:dev' in backend directory to ensure no runtime errors."
+          }
+        ]
+      }
+    ]
+  }
+}

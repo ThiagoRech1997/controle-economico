@@ -29,6 +29,45 @@ Sistema robusto de controle financeiro pessoal construído com Clean Architectur
 - SQL Server 2019+ ou Azure SQL Database
 - npm ou yarn
 
+## 🤖 Claude Code Setup
+
+Este projeto está configurado com comandos customizados, hooks e templates para o **Claude Code**, aumentando significativamente a produtividade no desenvolvimento.
+
+### Recursos Disponíveis
+
+- ✅ **5 Comandos Customizados** para criar use cases, features, migrations, etc.
+- ✅ **11 Hooks Automáticos** que lembram padrões e validam código
+- ✅ **20+ Templates** de código reutilizáveis
+- ✅ **Integração MCP** para GitHub e operações avançadas
+
+**Documentação Completa:** [`.claude/README.md`](.claude/README.md)
+
+### Quick Start com Claude Code
+
+```bash
+# Criar novo use case (backend)
+/use-case payments create-payment
+
+# Criar novo módulo (frontend)
+/feature notifications
+
+# Validar arquitetura
+/arch-validate
+
+# Validações pré-commit
+/pre-commit
+
+# Helper de migrations
+/db-migrate add-new-field
+```
+
+**Saiba mais:**
+- 📖 [Guia de Uso Completo](.claude/USAGE-GUIDE.md)
+- 🎬 [Exemplo de Workflow](.claude/EXAMPLE-WORKFLOW.md)
+- ✅ [Checklist de Instalação](.claude/INSTALLATION-CHECKLIST.md)
+
+---
+
 ## 🚀 Instalação
 
 ### 1. Clone o repositório
