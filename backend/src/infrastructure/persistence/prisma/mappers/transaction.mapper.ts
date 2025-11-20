@@ -3,7 +3,7 @@
  * Converts between Prisma models and Domain entities
  * Infrastructure layer - Framework specific
  */
-import { Transaction as PrismaTransaction } from '@prisma/client';
+import { Transaction as PrismaTransaction } from '.prisma/client';
 import { Transaction } from '../../../../domain/entities/transaction.entity';
 import { Money } from '../../../../domain/value-objects/money.vo';
 import { TransactionType } from '../../../../domain/value-objects/transaction-type.vo';
@@ -38,13 +38,13 @@ export class TransactionMapper {
   /**
    * Convert Domain entity to Prisma model data
    */
-  static toPrisma(transaction: Transaction): Omit<PrismaTransaction, 'createdAt' | 'updatedAt'> {
+  static toPrisma(transaction: Transaction) {
     return {
       id: transaction.id,
       accountId: transaction.accountId,
       categoryId: transaction.categoryId,
       type: transaction.type.value,
-      amount: transaction.amount.amount,
+      amount: transaction.amount.amount, // Prisma accepts number for Decimal fields
       description: transaction.description || null,
       date: transaction.date,
       isPaid: transaction.isPaid,
