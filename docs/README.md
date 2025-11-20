@@ -25,6 +25,13 @@ Bem-vindo à documentação do sistema de controle financeiro! Esta pasta conté
 - Fluxo de dependências
 - Exemplos de código
 
+**[Roadmap do Projeto](./ROADMAP.md)**
+- Funcionalidades implementadas
+- Features planejadas (Fase 1, 2 e 3)
+- Timeline estimado
+- Priorização de desenvolvimento
+- Como contribuir
+
 **[Índice de Arquivos Criados](./FILES_CREATED.md)**
 - Lista completa de arquivos
 - Organização do projeto
@@ -39,6 +46,7 @@ Bem-vindo à documentação do sistema de controle financeiro! Esta pasta conté
 docs/
 ├── README.md              # Este arquivo - Índice da documentação
 ├── ARCHITECTURE.md        # Arquitetura completa do sistema
+├── ROADMAP.md             # Planejamento e features futuras
 ├── QUICK_START.md         # Guia de início rápido
 └── FILES_CREATED.md       # Lista de arquivos criados
 ```
@@ -53,6 +61,9 @@ docs/
 ### Quero entender a arquitetura
 👉 Leia a [Documentação de Arquitetura](./ARCHITECTURE.md)
 
+### Quero saber o que vem a seguir
+👉 Veja o [Roadmap](./ROADMAP.md)
+
 ### Preciso ver os arquivos do projeto
 👉 Confira o [Índice de Arquivos](./FILES_CREATED.md)
 
@@ -65,6 +76,7 @@ docs/
 
 Documentos que serão adicionados conforme o projeto evolui:
 
+- [x] **ROADMAP.md** - Planejamento e features futuras ✅
 - [ ] **API_REFERENCE.md** - Referência completa da API REST
 - [ ] **DATABASE.md** - Documentação do schema e migrations
 - [ ] **TESTING.md** - Guia de testes (unitários, integração, E2E)
@@ -132,6 +144,7 @@ Fique à vontade para:
 |-----------|--------|-------------------|
 | README.md | ✅ Completo | 2025-01-20 |
 | ARCHITECTURE.md | ✅ Completo | 2025-01-20 |
+| ROADMAP.md | ✅ Completo | 2025-01-20 |
 | QUICK_START.md | ✅ Completo | 2025-01-20 |
 | FILES_CREATED.md | ✅ Completo | 2025-01-20 |
 | API_REFERENCE.md | 🚧 Planejado | - |

@@ -188,6 +188,7 @@ npm run test:e2e
 - 📖 [Guia Rápido de Início](./docs/QUICK_START.md) - Comece em 5 minutos
 - 🏗️ [Arquitetura Completa](./docs/ARCHITECTURE.md) - Detalhes da arquitetura do sistema
 - 📋 [Índice de Arquivos](./docs/FILES_CREATED.md) - Lista de todos os arquivos criados
+- 🗺️ [Roadmap do Projeto](./docs/ROADMAP.md) - Funcionalidades planejadas e timeline
 - 🔌 [Backend API Docs](http://localhost:3001/api/v1) - Documentação Swagger (quando implementada)
 
 ## 🛠️ Tecnologias
