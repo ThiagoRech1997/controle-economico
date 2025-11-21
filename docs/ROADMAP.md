@@ -4,7 +4,7 @@
 
 ---
 
-## 📊 Status Atual (v1.3.0)
+## 📊 Status Atual (v1.4.0)
 
 ### ✅ Implementado
 
@@ -45,6 +45,14 @@
   - [x] Repository Interface + Implementação Prisma
   - [x] Controller REST
   - [x] Module NestJS com DI
+- [x] **Goals Module** (completo - backend)
+  - [x] Goal Entity com regras de negócio
+  - [x] GoalStatus (IN_PROGRESS, COMPLETED, CANCELLED)
+  - [x] Goal Repository Interface + Implementação Prisma
+  - [x] 9 Use Cases (Create, Update, UpdateProgress, Complete, Cancel, Delete, List, Get, Forecast)
+  - [x] GoalsController com Swagger
+  - [x] GoalModule com DI completo
+  - [x] Forecast de conquista de metas baseado em média mensal de sobra
 
 #### Frontend
 - [x] Estrutura Modular (Feature-Sliced Design)
@@ -312,14 +320,17 @@ frontend/src/modules/goals/
 ```
 
 **Features:**
-- [ ] CRUD de metas financeiras
-- [ ] Progresso manual (currentValue)
-- [ ] Forecasting automático (já implementado parcialmente!)
-- [ ] Status: IN_PROGRESS, COMPLETED, CANCELLED
-- [ ] Visualização de progresso (%)
-- [ ] Data estimada de conquista
+- [x] CRUD de metas financeiras ✅
+- [x] Progresso manual (currentValue) ✅
+- [x] Forecasting automático (já implementado parcialmente!) ✅
+- [x] Status: IN_PROGRESS, COMPLETED, CANCELLED ✅
+- [x] Visualização de progresso (%) ✅
+- [x] Data estimada de conquista ✅
+- [ ] Frontend components (pendente)
 
-**Estimativa**: 3-4 dias
+**Status**: ✅ **Backend completo** | ⏳ Frontend pendente
+
+**Estimativa**: 3-4 dias | **Tempo real**: ~1 dia (backend)
 
 ---
 
@@ -620,7 +631,7 @@ Quer ajudar a implementar alguma feature do roadmap?
 ---
 
 **Última atualização**: 2025-01-21
-**Versão do Roadmap**: 1.3
+**Versão do Roadmap**: 1.4
 **Próxima revisão**: 2025-02-01
 
 ---
