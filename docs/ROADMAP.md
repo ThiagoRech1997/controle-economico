@@ -4,7 +4,7 @@
 
 ---
 
-## 📊 Status Atual (v1.6.0)
+## 📊 Status Atual (v1.7.0)
 
 ### ✅ Implementado
 
@@ -53,6 +53,11 @@
   - [x] GoalsController com Swagger
   - [x] GoalModule com DI completo
   - [x] Forecast de conquista de metas baseado em média mensal de sobra
+- [x] **Dashboard Module** (completo - backend)
+  - [x] Dashboard DTOs (Summary, MonthlyData, CategoryBreakdown, RecentTransaction, GoalProgress)
+  - [x] GetDashboardDataUseCase (agregação de dados)
+  - [x] DashboardController com Swagger
+  - [x] DashboardModule com DI completo
 
 #### Frontend
 - [x] Estrutura Modular (Feature-Sliced Design)
@@ -84,6 +89,12 @@
   - [x] Hooks React Query
   - [x] Services (API Client)
   - [x] Types TypeScript
+- [x] **Dashboard Module** (completo)
+  - [x] Types (DashboardSummary, MonthlyData, CategoryBreakdown, etc.)
+  - [x] Dashboard Service (API Client)
+  - [x] Hooks (useDashboard)
+  - [x] Components (DashboardContainer, SummaryCards, MonthlyChart, CategoryPieChart, RecentTransactionsWidget, GoalsWidget)
+  - [x] Home page integration
 
 #### Infraestrutura
 - [x] Configuração completa (backend + frontend)
@@ -364,10 +375,17 @@ frontend/src/modules/goals/
 
 **Backend:**
 ```
-backend/src/application/use-cases/dashboard/
-├── get-summary.use-case.ts
-├── get-recent-transactions.use-case.ts
-└── get-monthly-comparison.use-case.ts
+backend/src/
+├── application/
+│   ├── dtos/dashboard/
+│   │   └── dashboard.dto.ts
+│   └── use-cases/dashboard/
+│       └── get-dashboard-data.use-case.ts
+└── infrastructure/
+    ├── http/controllers/
+    │   └── dashboard.controller.ts
+    └── modules/
+        └── dashboard.module.ts
 ```
 
 **Frontend:**
@@ -378,23 +396,26 @@ frontend/src/modules/dashboard/
 │   ├── summary-cards.tsx
 │   ├── monthly-chart.tsx
 │   ├── category-pie-chart.tsx
-│   └── recent-transactions-widget.tsx
+│   ├── recent-transactions-widget.tsx
+│   └── goals-widget.tsx
 ├── hooks/
-│   └── use-dashboard-data.ts
+│   └── use-dashboard.ts
+├── services/
+│   └── dashboard.service.ts
 └── types/
     └── dashboard.types.ts
 ```
 
 **Features:**
-- [ ] Cards de resumo (receitas, despesas, saldo)
-- [ ] Gráfico de evolução mensal
-- [ ] Gráfico de distribuição por categoria (pizza)
-- [ ] Transações recentes
-- [ ] Metas em destaque
+- [x] Cards de resumo (receitas, despesas, saldo, contas, metas, pendentes) ✅
+- [x] Gráfico de evolução mensal (bar chart) ✅
+- [x] Gráfico de distribuição por categoria (visual bars + lista) ✅
+- [x] Transações recentes ✅
+- [x] Metas em destaque com progresso ✅
 
-**Bibliotecas**: Recharts ou Chart.js
+**Status**: ✅ **Completo (Backend + Frontend)**
 
-**Estimativa**: 4-5 dias
+**Estimativa**: 4-5 dias | **Tempo real**: ~1 dia
 
 ---
 
@@ -656,8 +677,8 @@ Quer ajudar a implementar alguma feature do roadmap?
 
 ---
 
-**Última atualização**: 2025-01-21
-**Versão do Roadmap**: 1.6
+**Última atualização**: 2025-01-22
+**Versão do Roadmap**: 1.7
 **Próxima revisão**: 2025-02-01
 
 ---
