@@ -1,7 +1,6 @@
 {
   "$schema": "https://code.claude.com/schemas/settings.json",
   "description": "Claude Code configuration for controle-economico project",
-
   "project": {
     "name": "Controle Econômico",
     "description": "Personal financial control system with Clean Architecture (NestJS) and Feature-Sliced Design (Next.js)",
@@ -11,19 +10,16 @@
       "frontend": "Feature-Sliced Design"
     }
   },
-
   "commands": {
     "enabled": true,
     "directory": "commands",
     "autoLoad": true
   },
-
   "hooks": {
     "enabled": true,
     "file": "hooks.json",
     "logLevel": "info"
   },
-
   "documentation": {
     "readme": "README.md",
     "patterns": "patterns.md",
@@ -32,7 +28,6 @@
     "troubleshooting": "TROUBLESHOOTING.md",
     "security": "SECURITY.md"
   },
-
   "mcp": {
     "enabled": true,
     "configFile": "../.mcp.json",
@@ -46,7 +41,6 @@
       }
     }
   },
-
   "codeGeneration": {
     "backend": {
       "usePathAliases": true,
@@ -63,7 +57,6 @@
       "testFramework": "react-testing-library"
     }
   },
-
   "validation": {
     "preCommit": {
       "enabled": true,
@@ -79,10 +72,8 @@
       "minCoverage": 80
     }
   },
-
   "_custom": {
     "note": "Custom fields for future implementation - not used by Claude Code",
-
     "skills": {
       "directory": "skills",
       "status": "planned",
@@ -94,7 +85,6 @@
         "database-migration"
       ]
     },
-
     "agents": {
       "directory": "agents",
       "status": "planned",
@@ -122,7 +112,6 @@
         }
       }
     },
-
     "workflows": {
       "directory": "workflows",
       "status": "planned",
@@ -144,7 +133,6 @@
         }
       }
     },
-
     "projectSpecific": {
       "backend": {
         "port": 3001,
@@ -161,12 +149,18 @@
       }
     }
   },
-
   "_meta": {
     "version": "1.0.0",
     "created": "2025-11-20",
     "lastUpdated": "2025-11-20",
     "author": "Claude Code",
     "documentation": "See README.md for complete documentation"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(test:*)"
+    ],
+    "deny": [],
+    "ask": []
   }
 }

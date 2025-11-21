@@ -5,6 +5,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TransactionModule } from './infrastructure/modules/transaction.module';
+import { AuthModule } from './infrastructure/modules/auth.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { TransactionModule } from './infrastructure/modules/transaction.module';
     }),
 
     // Feature modules
+    AuthModule,
     TransactionModule,
 
     // Add other modules here:
