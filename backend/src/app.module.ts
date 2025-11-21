@@ -8,6 +8,7 @@ import { TransactionModule } from './infrastructure/modules/transaction.module';
 import { AuthModule } from './infrastructure/modules/auth.module';
 import { AccountModule } from './infrastructure/modules/account.module';
 import { CategoryModule } from './infrastructure/modules/category.module';
+import { GoalModule } from './infrastructure/modules/goal.module';
 
 @Module({
   imports: [
@@ -22,9 +23,7 @@ import { CategoryModule } from './infrastructure/modules/category.module';
     AccountModule,
     CategoryModule,
     TransactionModule,
-
-    // Add other modules here:
-    // GoalModule,
+    GoalModule,
   ],
   controllers: [],
   providers: [],
