@@ -4,7 +4,7 @@
 
 ---
 
-## 📊 Status Atual (v1.4.0)
+## 📊 Status Atual (v1.5.0)
 
 ### ✅ Implementado
 
@@ -56,6 +56,14 @@
 
 #### Frontend
 - [x] Estrutura Modular (Feature-Sliced Design)
+- [x] **Authentication Module** (completo)
+  - [x] Types (User, LoginInput, RegisterInput, AuthResponse)
+  - [x] Auth Service (login, register, refresh)
+  - [x] Zustand Auth Store (tokens, user, isAuthenticated)
+  - [x] Hooks (useLogin, useRegister, useAuth)
+  - [x] Components (LoginForm, RegisterForm, AuthGuard, GuestGuard)
+  - [x] Protected Routes Layout
+  - [x] API Client com token refresh automático
 - [x] **Transactions Module** (completo)
   - [x] Components (Form, List)
   - [x] Hooks React Query
@@ -67,6 +75,7 @@
 - [x] Documentação organizada
 - [x] Componentes UI básicos (Shadcn/UI)
 - [x] JWT configurado (access + refresh tokens)
+- [x] Route Groups para páginas autenticadas
 
 ---
 
@@ -132,14 +141,16 @@ frontend/src/modules/auth/
 - [x] Login com JWT (access + refresh tokens) ✅
 - [x] Autenticação em todas as rotas protegidas ✅
 - [x] Guard (JwtAuthGuard) no backend ✅
-- [ ] Protected routes no frontend (pendente)
-- [ ] Logout e limpeza de tokens (pendente - frontend)
+- [x] Protected routes no frontend ✅
+- [x] Logout e limpeza de tokens ✅
 - [x] Password hashing (bcrypt - 10 rounds) ✅
 - [x] Token refresh mechanism ✅
+- [x] Auto token refresh no API client ✅
+- [x] GuestGuard para páginas de login/register ✅
 
-**Status**: ✅ **Backend completo** | ⏳ Frontend pendente
+**Status**: ✅ **Completo (Backend + Frontend)**
 
-**Estimativa**: 3-5 dias | **Tempo real**: ~2 dias (backend)
+**Estimativa**: 3-5 dias | **Tempo real**: ~2 dias (backend) + ~1 dia (frontend)
 
 ---
 
@@ -631,7 +642,7 @@ Quer ajudar a implementar alguma feature do roadmap?
 ---
 
 **Última atualização**: 2025-01-21
-**Versão do Roadmap**: 1.4
+**Versão do Roadmap**: 1.5
 **Próxima revisão**: 2025-02-01
 
 ---
