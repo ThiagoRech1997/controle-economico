@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TransactionModule } from './infrastructure/modules/transaction.module';
 import { AuthModule } from './infrastructure/modules/auth.module';
 import { AccountModule } from './infrastructure/modules/account.module';
+import { CategoryModule } from './infrastructure/modules/category.module';
 
 @Module({
   imports: [
@@ -19,11 +20,11 @@ import { AccountModule } from './infrastructure/modules/account.module';
     // Feature modules
     AuthModule,
     AccountModule,
+    CategoryModule,
     TransactionModule,
 
     // Add other modules here:
     // GoalModule,
-    // CategoryModule,
   ],
   controllers: [],
   providers: [],
