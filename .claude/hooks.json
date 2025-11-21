@@ -7,7 +7,8 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "User is working on backend code. Remember to follow Clean Architecture: Domain (pure logic) ← Application (use cases) ← Infrastructure (adapters). Check CLAUDE.md for detailed patterns."
+            "prompt": "User is working on backend code. Remember to follow Clean Architecture: Domain (pure logic) ← Application (use cases) ← Infrastructure (adapters). Check CLAUDE.md for detailed patterns.",
+            "timeout": 60
           }
         ]
       },
@@ -17,7 +18,8 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "User is working on frontend code. Remember to follow Feature-Sliced Design: modules/<feature>/{components,hooks,services,types}. React Query for server state, Zustand only for global state. Check CLAUDE.md for patterns."
+            "prompt": "User is working on frontend code. Remember to follow Feature-Sliced Design: modules/<feature>/{components,hooks,services,types}. React Query for server state, Zustand only for global state. Check CLAUDE.md for patterns.",
+            "timeout": 60
           }
         ]
       },
@@ -27,7 +29,8 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "User wants to create a new use case. Suggest using the /use-case command or guide them through Clean Architecture pattern: 1) Domain entity/repository interface, 2) Application DTOs and use case, 3) Infrastructure Prisma implementation and controller, 4) Module wiring."
+            "prompt": "User wants to create a new use case. Suggest using the /use-case command or guide them through Clean Architecture pattern: 1) Domain entity/repository interface, 2) Application DTOs and use case, 3) Infrastructure Prisma implementation and controller, 4) Module wiring.",
+            "timeout": 60
           }
         ]
       },
@@ -37,7 +40,8 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "User wants to create a new feature module. Suggest using the /feature command or guide them through Feature-Sliced Design: modules/<feature>/{components,hooks,services,types}. Remember: React Query for data, no cross-module imports."
+            "prompt": "User wants to create a new feature module. Suggest using the /feature command or guide them through Feature-Sliced Design: modules/<feature>/{components,hooks,services,types}. Remember: React Query for data, no cross-module imports.",
+            "timeout": 60
           }
         ]
       },
@@ -47,7 +51,8 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "User is about to commit. Suggest running /pre-commit command to validate tests, linting, and type-checking before committing."
+            "prompt": "User is about to commit. Suggest running /pre-commit command to validate tests, linting, and type-checking before committing.",
+            "timeout": 30
           }
         ]
       }
@@ -55,31 +60,45 @@
     "PreToolUse": [
       {
         "description": "Protect sensitive config files",
-        "matcher": "write.*\\.env",
+        "matcher": "write.*\\.env$",
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "IMPORTANT: User is trying to modify .env file. This may expose secrets. Only allow if they're updating with masked values or adding new variables. Never write actual API keys or passwords."
+            "prompt": "IMPORTANT: User is trying to modify .env file. This may expose secrets. Only allow if they're updating with masked values or adding new variables. Never write actual API keys or passwords.",
+            "timeout": 30
           }
         ]
       },
       {
         "description": "Warn before deleting critical files",
-        "matcher": "bash.*rm.*(prisma|schema\\.prisma|package\\.json|tsconfig\\.json|\\.env)",
+        "matcher": "bash.*rm.*(schema\\.prisma|package\\.json|tsconfig\\.json|\\.env)",
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "WARNING: Command attempts to delete a critical file. Verify this is intentional before allowing. Critical files: schema.prisma, package.json, tsconfig.json, .env files."
+            "prompt": "WARNING: Command attempts to delete a critical file. Verify this is intentional before allowing. Critical files: schema.prisma, package.json, tsconfig.json, .env files.",
+            "timeout": 30
           }
         ]
       },
       {
         "description": "Validate Prisma migrations",
-        "matcher": "bash.*prisma.*migrate",
+        "matcher": "bash.*prisma.*(migrate|db push)",
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "Prisma migration detected. Ensure: 1) Schema is valid, 2) Migration has descriptive name, 3) Database backup exists (if production), 4) Team is aware of schema changes."
+            "prompt": "Prisma migration detected. Ensure: 1) Schema is valid, 2) Migration has descriptive name, 3) Database backup exists (if production), 4) Team is aware of schema changes.",
+            "timeout": 60
+          }
+        ]
+      },
+      {
+        "description": "Warn before destructive DB operations",
+        "matcher": "bash.*(prisma.*reset|prisma.*db.*push.*--accept-data-loss|drop|truncate|delete.*CASCADE)",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "CRITICAL: Destructive database operation detected. This will cause data loss. Confirm: 1) You have a backup, 2) This is a development environment, 3) You understand the consequences.",
+            "timeout": 30
           }
         ]
       }
@@ -87,31 +106,34 @@
     "PostToolUse": [
       {
         "description": "Validate Prisma schema after modifications",
-        "matcher": "write.*schema\\.prisma",
+        "matcher": "write.*schema\\.prisma$",
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "Prisma schema was modified. Suggest running: 1) npx prisma validate, 2) npx prisma format, 3) Consider creating migration with /db-migrate command."
+            "prompt": "Prisma schema was modified. Suggest running: 1) npx prisma validate, 2) npx prisma format, 3) Consider creating migration with /db-migrate command.",
+            "timeout": 60
           }
         ]
       },
       {
         "description": "Suggest testing after use case creation",
-        "matcher": "write.*use-case|write.*\\.use-case\\.ts",
+        "matcher": "write.*\\.use-case\\.ts$",
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "Use case file was created/modified. Remind user to: 1) Create unit tests, 2) Test with mock repository, 3) Add integration test if needed."
+            "prompt": "Use case file was created/modified. Remind user to: 1) Create unit tests, 2) Test with mock repository, 3) Add integration test if needed.",
+            "timeout": 60
           }
         ]
       },
       {
         "description": "Suggest running dev server after major changes",
-        "matcher": "write.*(module\\.ts|controller\\.ts|service\\.ts)",
+        "matcher": "write.*(module\\.ts|controller\\.ts|service\\.ts)$",
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "Backend infrastructure file was modified. Consider testing by running 'npm run start:dev' in backend directory to ensure no runtime errors."
+            "prompt": "Backend infrastructure file was modified. Consider testing by running 'npm run start:dev' in backend directory to ensure no runtime errors.",
+            "timeout": 60
           }
         ]
       }

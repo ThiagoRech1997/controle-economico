@@ -1,10 +1,10 @@
 {
   "$schema": "https://code.claude.com/schemas/settings.json",
-  "description": "Local settings for Claude Code - controle-economico project",
+  "description": "Claude Code configuration for controle-economico project",
 
   "project": {
     "name": "Controle Econômico",
-    "description": "Personal financial control system with Clean Architecture",
+    "description": "Personal financial control system with Clean Architecture (NestJS) and Feature-Sliced Design (Next.js)",
     "version": "1.0.0",
     "architecture": {
       "backend": "Clean Architecture (Hexagonal)",
@@ -18,99 +18,19 @@
     "autoLoad": true
   },
 
-  "skills": {
-    "enabled": true,
-    "directory": "skills",
-    "autoSuggest": true,
-    "categories": {
-      "backend": {
-        "enabled": true,
-        "skills": ["create-use-case", "validate-architecture"]
-      },
-      "frontend": {
-        "enabled": true,
-        "skills": ["create-feature-module"]
-      },
-      "database": {
-        "enabled": true,
-        "skills": ["database-migration"]
-      },
-      "validation": {
-        "enabled": true,
-        "skills": ["pre-commit-check", "validate-architecture"]
-      }
-    }
-  },
-
-  "agents": {
-    "enabled": true,
-    "directory": "agents",
-    "config": {
-      "code-reviewer": {
-        "enabled": false,
-        "autoRun": false,
-        "strictness": "high",
-        "checkTests": true,
-        "checkDocs": true,
-        "checkArchitecture": true,
-        "minCoverage": 80
-      },
-      "test-generator": {
-        "enabled": false,
-        "autoRun": false,
-        "coverageThreshold": 80,
-        "generateMocks": true,
-        "testFramework": "jest"
-      },
-      "architecture-validator": {
-        "enabled": false,
-        "autoRun": false,
-        "rules": {
-          "domainPurity": true,
-          "applicationIsolation": true,
-          "noCrossModuleImports": true
-        }
-      }
-    }
-  },
-
-  "workflows": {
-    "enabled": true,
-    "directory": "workflows",
-    "config": {
-      "full-feature-workflow": {
-        "enabled": false,
-        "autoValidation": true,
-        "stopOnError": true,
-        "createTests": true,
-        "createDocs": true,
-        "autoCommit": false
-      },
-      "pr-preparation-workflow": {
-        "enabled": false,
-        "minCoverage": 80,
-        "requireDocs": true,
-        "autoCreatePR": false
-      },
-      "database-change-workflow": {
-        "enabled": false,
-        "createBackup": true,
-        "validateMigration": true,
-        "testMigration": true
-      }
-    }
-  },
-
   "hooks": {
     "enabled": true,
     "file": "hooks.json",
     "logLevel": "info"
   },
 
-  "templates": {
-    "enabled": true,
-    "file": "patterns.md",
-    "autoSuggest": true
+  "documentation": {
+    "readme": "README.md",
+    "patterns": "patterns.md",
+    "quickReference": "QUICK-REFERENCE.md",
+    "examples": "EXAMPLES.md",
+    "troubleshooting": "TROUBLESHOOTING.md",
+    "security": "SECURITY.md"
   },
 
   "mcp": {
@@ -119,28 +39,11 @@
     "servers": {
       "github": {
         "enabled": false,
-        "autoConnect": false
+        "note": "Set GITHUB_TOKEN in .mcp.json to enable"
       },
       "filesystem": {
-        "enabled": true,
-        "autoConnect": true
+        "enabled": true
       }
-    }
-  },
-
-  "validation": {
-    "preCommit": {
-      "enabled": true,
-      "runLint": true,
-      "runTests": true,
-      "runTypeCheck": true,
-      "checkArchitecture": true
-    },
-    "prePush": {
-      "enabled": true,
-      "runFullTests": true,
-      "checkCoverage": true,
-      "minCoverage": 80
     }
   },
 
@@ -161,39 +64,109 @@
     }
   },
 
-  "documentation": {
-    "autoUpdate": false,
-    "generateChangelog": false,
-    "updateReadme": false,
-    "formats": ["markdown"]
-  },
-
-  "ci": {
-    "platform": "github-actions",
-    "runAgents": false,
-    "runWorkflows": false
-  },
-
-  "custom": {
-    "backend": {
-      "port": 3001,
-      "apiPrefix": "/api/v1",
-      "database": "sqlserver"
+  "validation": {
+    "preCommit": {
+      "enabled": true,
+      "runLint": true,
+      "runTests": true,
+      "runTypeCheck": true,
+      "checkArchitecture": true
     },
-    "frontend": {
-      "port": 3000,
-      "uiFramework": "shadcn-ui",
-      "stateManagement": {
-        "server": "react-query",
-        "global": "zustand"
+    "prePush": {
+      "enabled": true,
+      "runFullTests": true,
+      "checkCoverage": true,
+      "minCoverage": 80
+    }
+  },
+
+  "_custom": {
+    "note": "Custom fields for future implementation - not used by Claude Code",
+
+    "skills": {
+      "directory": "skills",
+      "status": "planned",
+      "planned": [
+        "create-use-case",
+        "create-feature-module",
+        "validate-architecture",
+        "pre-commit-check",
+        "database-migration"
+      ]
+    },
+
+    "agents": {
+      "directory": "agents",
+      "status": "planned",
+      "planned": [
+        "code-reviewer",
+        "test-generator",
+        "architecture-validator",
+        "migration-assistant",
+        "performance-optimizer"
+      ],
+      "config": {
+        "code-reviewer": {
+          "enabled": false,
+          "strictness": "high",
+          "checkTests": true,
+          "checkDocs": true,
+          "checkArchitecture": true,
+          "minCoverage": 80
+        },
+        "test-generator": {
+          "enabled": false,
+          "coverageThreshold": 80,
+          "generateMocks": true,
+          "testFramework": "jest"
+        }
+      }
+    },
+
+    "workflows": {
+      "directory": "workflows",
+      "status": "planned",
+      "planned": [
+        "full-feature-workflow",
+        "database-change-workflow",
+        "refactoring-workflow",
+        "pr-preparation-workflow",
+        "onboarding-workflow"
+      ],
+      "config": {
+        "full-feature-workflow": {
+          "enabled": false,
+          "autoValidation": true,
+          "stopOnError": true,
+          "createTests": true,
+          "createDocs": true,
+          "autoCommit": false
+        }
+      }
+    },
+
+    "projectSpecific": {
+      "backend": {
+        "port": 3001,
+        "apiPrefix": "/api/v1",
+        "database": "sqlserver"
+      },
+      "frontend": {
+        "port": 3000,
+        "uiFramework": "shadcn-ui",
+        "stateManagement": {
+          "server": "react-query",
+          "global": "zustand"
+        }
       }
     }
   },
 
-  "notes": {
-    "setup": "This configuration follows Claude Agent SDK structure",
-    "structure": "commands/ + skills/ + agents/ + workflows/",
-    "documentation": "See README.md for complete guide",
-    "version": "1.0.0"
+  "_meta": {
+    "version": "1.0.0",
+    "created": "2025-11-20",
+    "lastUpdated": "2025-11-20",
+    "author": "Claude Code",
+    "documentation": "See README.md for complete documentation"
   }
 }
