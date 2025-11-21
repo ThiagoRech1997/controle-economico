@@ -4,7 +4,7 @@
 
 ---
 
-## 📊 Status Atual (v1.0.0)
+## 📊 Status Atual (v1.2.0)
 
 ### ✅ Implementado
 
@@ -24,6 +24,13 @@
   - [x] JWT Strategy (Passport)
   - [x] JwtAuthGuard
   - [x] AuthModule com DI completo
+- [x] **Accounts Module** (completo - backend)
+  - [x] Account Entity com regras de negócio
+  - [x] Value Objects (AccountType, Currency)
+  - [x] Account Repository Interface + Implementação Prisma
+  - [x] 5 Use Cases (Create, Update, Delete, List, GetBalance)
+  - [x] AccountsController com Swagger
+  - [x] AccountModule com DI completo
 - [x] **Transactions Module** (completo)
   - [x] Transaction Entity com regras de negócio
   - [x] Value Objects (Money, TransactionType)
@@ -172,14 +179,17 @@ frontend/src/modules/accounts/
 ```
 
 **Features:**
-- [ ] CRUD completo de contas
-- [ ] Tipos de conta (CHECKING, SAVINGS, CASH, INVESTMENT)
-- [ ] Cálculo automático de saldo (initialBalance + transações)
-- [ ] Multi-moedas (BRL, USD, EUR)
-- [ ] Ativar/desativar contas
-- [ ] Validação: não permitir deletar conta com transações
+- [x] CRUD completo de contas ✅
+- [x] Tipos de conta (CHECKING, SAVINGS, CASH, INVESTMENT) ✅
+- [x] Cálculo automático de saldo (initialBalance + transações) ✅
+- [x] Multi-moedas (BRL, USD, EUR) ✅
+- [x] Ativar/desativar contas ✅
+- [x] Validação: não permitir deletar conta com transações ✅
+- [ ] Frontend components (pendente)
 
-**Estimativa**: 2-3 dias
+**Status**: ✅ **Backend completo** | ⏳ Frontend pendente
+
+**Estimativa**: 2-3 dias | **Tempo real**: ~1 dia (backend)
 
 ---
 
@@ -600,7 +610,7 @@ Quer ajudar a implementar alguma feature do roadmap?
 ---
 
 **Última atualização**: 2025-01-21
-**Versão do Roadmap**: 1.1
+**Versão do Roadmap**: 1.2
 **Próxima revisão**: 2025-02-01
 
 ---
