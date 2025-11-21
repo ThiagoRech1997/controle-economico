@@ -4,7 +4,7 @@
 
 ---
 
-## 📊 Status Atual (v1.2.0)
+## 📊 Status Atual (v1.3.0)
 
 ### ✅ Implementado
 
@@ -31,6 +31,13 @@
   - [x] 5 Use Cases (Create, Update, Delete, List, GetBalance)
   - [x] AccountsController com Swagger
   - [x] AccountModule com DI completo
+- [x] **Categories Module** (completo - backend)
+  - [x] Category Entity com regras de negócio
+  - [x] CategoryType (INCOME, EXPENSE)
+  - [x] Category Repository Interface + Implementação Prisma
+  - [x] 4 Use Cases (Create, Update, Delete, List)
+  - [x] CategoriesController com Swagger
+  - [x] CategoryModule com DI completo
 - [x] **Transactions Module** (completo)
   - [x] Transaction Entity com regras de negócio
   - [x] Value Objects (Money, TransactionType)
@@ -239,14 +246,17 @@ frontend/src/modules/categories/
 ```
 
 **Features:**
-- [ ] CRUD de categorias personalizadas
-- [ ] Flag: Essential (fixed costs) vs Non-Essential
-- [ ] Tipo: INCOME ou EXPENSE
-- [ ] Ícones e cores customizáveis
-- [ ] Categorias padrão (seed)
-- [ ] Validação: não permitir deletar categoria em uso
+- [x] CRUD de categorias personalizadas ✅
+- [x] Flag: Essential (fixed costs) vs Non-Essential ✅
+- [x] Tipo: INCOME ou EXPENSE ✅
+- [x] Ícones e cores customizáveis ✅
+- [ ] Categorias padrão (seed) - pendente
+- [x] Validação: não permitir deletar categoria em uso ✅
+- [ ] Frontend components (pendente)
 
-**Estimativa**: 2-3 dias
+**Status**: ✅ **Backend completo** | ⏳ Frontend pendente
+
+**Estimativa**: 2-3 dias | **Tempo real**: ~1 dia (backend)
 
 ---
 
@@ -610,7 +620,7 @@ Quer ajudar a implementar alguma feature do roadmap?
 ---
 
 **Última atualização**: 2025-01-21
-**Versão do Roadmap**: 1.2
+**Versão do Roadmap**: 1.3
 **Próxima revisão**: 2025-02-01
 
 ---
