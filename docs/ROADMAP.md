@@ -11,6 +11,19 @@
 #### Backend
 - [x] Estrutura Clean Architecture (Hexagonal)
 - [x] Schema Prisma completo (SQL Server)
+- [x] **PrismaService & PrismaModule** (global)
+- [x] **Authentication Module** (completo - backend)
+  - [x] User Entity com regras de negócio
+  - [x] Email Value Object com validação
+  - [x] User Repository Interface + Implementação Prisma
+  - [x] RegisterUserUseCase (com bcrypt)
+  - [x] LoginUserUseCase (com JWT)
+  - [x] ValidateTokenUseCase
+  - [x] RefreshTokenUseCase
+  - [x] AuthController com Swagger
+  - [x] JWT Strategy (Passport)
+  - [x] JwtAuthGuard
+  - [x] AuthModule com DI completo
 - [x] **Transactions Module** (completo)
   - [x] Transaction Entity com regras de negócio
   - [x] Value Objects (Money, TransactionType)
@@ -31,6 +44,7 @@
 - [x] Configuração completa (backend + frontend)
 - [x] Documentação organizada
 - [x] Componentes UI básicos (Shadcn/UI)
+- [x] JWT configurado (access + refresh tokens)
 
 ---
 
@@ -92,15 +106,18 @@ frontend/src/modules/auth/
 ```
 
 **Features:**
-- [ ] Registro de usuários com validação de email
-- [ ] Login com JWT (access + refresh tokens)
-- [ ] Autenticação em todas as rotas protegidas
-- [ ] Guard global no backend
-- [ ] Protected routes no frontend
-- [ ] Logout e limpeza de tokens
-- [ ] Password hashing (bcrypt)
+- [x] Registro de usuários com validação de email ✅
+- [x] Login com JWT (access + refresh tokens) ✅
+- [x] Autenticação em todas as rotas protegidas ✅
+- [x] Guard (JwtAuthGuard) no backend ✅
+- [ ] Protected routes no frontend (pendente)
+- [ ] Logout e limpeza de tokens (pendente - frontend)
+- [x] Password hashing (bcrypt - 10 rounds) ✅
+- [x] Token refresh mechanism ✅
 
-**Estimativa**: 3-5 dias
+**Status**: ✅ **Backend completo** | ⏳ Frontend pendente
+
+**Estimativa**: 3-5 dias | **Tempo real**: ~2 dias (backend)
 
 ---
 
@@ -582,8 +599,8 @@ Quer ajudar a implementar alguma feature do roadmap?
 
 ---
 
-**Última atualização**: 2025-01-20
-**Versão do Roadmap**: 1.0
+**Última atualização**: 2025-01-21
+**Versão do Roadmap**: 1.1
 **Próxima revisão**: 2025-02-01
 
 ---
