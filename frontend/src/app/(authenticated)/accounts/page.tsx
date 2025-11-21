@@ -1,16 +1,37 @@
 /**
  * Accounts Page
- * Placeholder - To be implemented with accounts module
+ * Manages user bank accounts and wallets
  */
+'use client';
+
+import { useState } from 'react';
+import { AccountList } from '@/modules/accounts/components/account-list';
+import { AccountForm } from '@/modules/accounts/components/account-form';
+import { Button } from '@/shared/components/ui/button';
+
 export default function AccountsPage() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Accounts</h1>
-      <div className="bg-white rounded-lg shadow p-6">
-        <p className="text-gray-600">
-          Account management coming soon. This page will allow you to manage your
-          bank accounts, wallets, and other financial accounts.
-        </p>
+    <div className="container mx-auto p-6 max-w-6xl">
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-3xl font-bold">Accounts</h1>
+        <Button onClick={() => setShowForm(!showForm)}>
+          {showForm ? 'Close Form' : 'New Account'}
+        </Button>
+      </div>
+
+      <div className="space-y-6">
+        {showForm && (
+          <div className="flex justify-center">
+            <AccountForm
+              onSuccess={() => setShowForm(false)}
+              onCancel={() => setShowForm(false)}
+            />
+          </div>
+        )}
+
+        <AccountList />
       </div>
     </div>
   );

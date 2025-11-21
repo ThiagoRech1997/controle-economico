@@ -4,7 +4,7 @@
 
 ---
 
-## 📊 Status Atual (v1.5.0)
+## 📊 Status Atual (v1.6.0)
 
 ### ✅ Implementado
 
@@ -64,6 +64,21 @@
   - [x] Components (LoginForm, RegisterForm, AuthGuard, GuestGuard)
   - [x] Protected Routes Layout
   - [x] API Client com token refresh automático
+- [x] **Accounts Module** (completo)
+  - [x] Types (Account, AccountWithBalance, CreateAccountInput)
+  - [x] Account Service (CRUD + balance)
+  - [x] Hooks (useAccounts, useCreateAccount, useUpdateAccount, useDeleteAccount)
+  - [x] Components (AccountForm, AccountCard, AccountList)
+- [x] **Categories Module** (completo)
+  - [x] Types (Category, CreateCategoryInput, CategoryType)
+  - [x] Category Service (CRUD)
+  - [x] Hooks (useCategories, useCreateCategory, useUpdateCategory, useDeleteCategory)
+  - [x] Components (CategoryForm, CategoryBadge, CategoryList)
+- [x] **Goals Module** (completo)
+  - [x] Types (Goal, GoalForecast, CreateGoalInput, GoalStatus)
+  - [x] Goal Service (CRUD + progress + forecast)
+  - [x] Hooks (useGoals, useCreateGoal, useGoalForecast, useUpdateProgress, etc.)
+  - [x] Components (GoalForm, GoalCard, GoalList, GoalProgressBar)
 - [x] **Transactions Module** (completo)
   - [x] Components (Form, List)
   - [x] Hooks React Query
@@ -211,11 +226,11 @@ frontend/src/modules/accounts/
 - [x] Multi-moedas (BRL, USD, EUR) ✅
 - [x] Ativar/desativar contas ✅
 - [x] Validação: não permitir deletar conta com transações ✅
-- [ ] Frontend components (pendente)
+- [x] Frontend components (AccountForm, AccountCard, AccountList) ✅
 
-**Status**: ✅ **Backend completo** | ⏳ Frontend pendente
+**Status**: ✅ **Completo (Backend + Frontend)**
 
-**Estimativa**: 2-3 dias | **Tempo real**: ~1 dia (backend)
+**Estimativa**: 2-3 dias | **Tempo real**: ~1 dia (backend) + ~0.5 dia (frontend)
 
 ---
 
@@ -271,11 +286,11 @@ frontend/src/modules/categories/
 - [x] Ícones e cores customizáveis ✅
 - [ ] Categorias padrão (seed) - pendente
 - [x] Validação: não permitir deletar categoria em uso ✅
-- [ ] Frontend components (pendente)
+- [x] Frontend components (CategoryForm, CategoryBadge, CategoryList) ✅
 
-**Status**: ✅ **Backend completo** | ⏳ Frontend pendente
+**Status**: ✅ **Completo (Backend + Frontend)**
 
-**Estimativa**: 2-3 dias | **Tempo real**: ~1 dia (backend)
+**Estimativa**: 2-3 dias | **Tempo real**: ~1 dia (backend) + ~0.5 dia (frontend)
 
 ---
 
@@ -337,11 +352,11 @@ frontend/src/modules/goals/
 - [x] Status: IN_PROGRESS, COMPLETED, CANCELLED ✅
 - [x] Visualização de progresso (%) ✅
 - [x] Data estimada de conquista ✅
-- [ ] Frontend components (pendente)
+- [x] Frontend components (GoalForm, GoalCard, GoalList, GoalProgressBar) ✅
 
-**Status**: ✅ **Backend completo** | ⏳ Frontend pendente
+**Status**: ✅ **Completo (Backend + Frontend)**
 
-**Estimativa**: 3-4 dias | **Tempo real**: ~1 dia (backend)
+**Estimativa**: 3-4 dias | **Tempo real**: ~1 dia (backend) + ~0.5 dia (frontend)
 
 ---
 
@@ -642,7 +657,7 @@ Quer ajudar a implementar alguma feature do roadmap?
 ---
 
 **Última atualização**: 2025-01-21
-**Versão do Roadmap**: 1.5
+**Versão do Roadmap**: 1.6
 **Próxima revisão**: 2025-02-01
 
 ---
