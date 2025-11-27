@@ -1,0 +1,80 @@
+services:
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: controle-economico-backend
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      # IMPORTANT: Update DATABASE_URL with your external SQL Server connection string
+      # You can use .env file or pass via command line
+      - DATABASE_URL=${DATABASE_URL:-sqlserver://host.docker.internal:1433;database=controle_economico;user=sa;password=YourPassword123!;encrypt=true;trustServerCertificate=true}
+      - JWT_SECRET=${JWT_SECRET:-your-super-secret-jwt-key-change-this-in-production}
+      - JWT_ACCESS_EXPIRATION=${JWT_ACCESS_EXPIRATION:-1h}
+      - JWT_REFRESH_EXPIRATION=${JWT_REFRESH_EXPIRATION:-7d}
+      - API_PREFIX=${API_PREFIX:-api/v1}
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:3000,http://frontend:3000}
+    ports:
+      - "3001:3001"
+    networks:
+      - app-network
+    restart: unless-stopped
+    extra_hosts:
+      # Allows container to access host machine's SQL Server
+      - "host.docker.internal:host-gateway"
+    command: sh -c "npx prisma migrate deploy && node dist/main"
+
+  # Frontend Web Application
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:3001/api/v1}
+        - NEXT_PUBLIC_APP_NAME=${NEXT_PUBLIC_APP_NAME:-Financial Control System}
+        - NEXT_PUBLIC_APP_VERSION=${NEXT_PUBLIC_APP_VERSION:-1.0.0}
+    container_name: controle-economico-frontend
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:3001/api/v1}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+
+# Optional: Uncomment below to include SQL Server in Docker
+# Useful for development/testing
+#
+# volumes:
+#   mssql_data:
+#     driver: local
+#
+# services:
+#   database:
+#     image: mcr.microsoft.com/mssql/server:2022-latest
+#     container_name: controle-economico-db
+#     environment:
+#       - ACCEPT_EULA=Y
+#       - SA_PASSWORD=YourStrongPassword123!
+#       - MSSQL_PID=Developer
+#     ports:
+#       - "1433:1433"
+#     volumes:
+#       - mssql_data:/var/opt/mssql
+#     networks:
+#       - app-network
+#     healthcheck:
+#       test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrongPassword123! -Q "SELECT 1" || exit 1
+#       interval: 10s
+#       timeout: 5s
+#       retries: 5
+#       start_period: 30s
